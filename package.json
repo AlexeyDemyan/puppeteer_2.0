@@ -1,0 +1,28 @@
+{
+  "name": "puppeteer_2.0",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run clean && npm run compile",
+    "clean": "rimraf dist",
+    "start": "npm run build && node ./dist/main.js",
+    "ts": "ts-node",
+    "compile": "tsc -p tsconfig.json",
+    "nodemon": "nodemon"
+  },
+  "author": "Alex",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "18.17.17",
+    "rimraf": "5.0.1",
+    "ts-node": "10.9.1",
+    "typescript": "^5.8.2",
+    "nodemon": "3.0.1"
+  },
+  "type": "module",
+  "dependencies": {
+    "puppeteer": "^24.4.0"
+  }
+}
