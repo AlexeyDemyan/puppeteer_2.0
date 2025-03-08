@@ -5,8 +5,6 @@ import { logPageContent } from './log-page-content.js';
 const TARGET_PAGE =
   'https://store.steampowered.com/login/?snr=1_4_4__more-content-login';
 
-const WISHLIST_PAGE = 'https://steamcommunity.com/my/wishlist/';
-
 export const puppeteerScrapeAll = async (): Promise<any> => {
   const parsedConfig = config();
   if (parsedConfig.error) {
@@ -40,12 +38,13 @@ export const puppeteerScrapeAll = async (): Promise<any> => {
   }, 10000);
 
   setTimeout(() => {
-    console.log('20 seconds passed, trying to click on Wishlist');
-    page.goto(WISHLIST_PAGE, { waitUntil: 'networkidle0' })
+    console.log('20 seconds passed, going to Threshold');
+    page.goto('https://store.steampowered.com/app/2580020', { waitUntil: 'networkidle0' })
   }, 20000);
   
   setTimeout(() => {
-    console.log('30 seconds passed, maybe clisk on Wishlist yourself');
+    console.log('30 seconds passed, going to another one');
+    page.goto('https://store.steampowered.com/app/2437750', { waitUntil: 'networkidle0' })
   }, 30000);
 
   setTimeout(() => {
