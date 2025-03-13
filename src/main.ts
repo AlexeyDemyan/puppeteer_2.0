@@ -7,18 +7,12 @@ testFunc();
 // puppeteerScrapeAll();
 // puppeteerInit();
 
-const fileReader = new FileReader('logs/scraped_content.log');
+const fileReader = new FileReader('logs/appids.txt');
 fileReader.read();
 const logText = fileReader.toString();
+const pattern = /\"appid\":/g;
 
-const pattern = '\"appid\":';
-
-const appIdMatcher = (index: number) => {
-  console.log(index);
-};
-
-for (let i = 0; i < 3; i++) {
-  appIdMatcher(i);
-}
-
-
+const foundItems = logText.match(pattern);
+console.log(logText)
+console.log(foundItems);
+console.log(foundItems?.length);
