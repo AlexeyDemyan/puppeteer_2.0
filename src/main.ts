@@ -10,9 +10,9 @@ testFunc();
 const fileReader = new FileReader('logs/appids.txt');
 fileReader.read();
 const logText = fileReader.toString();
-const pattern = /\"appid\":/g;
+const pattern = /\\"appid\\":/g;
 
 const foundItems = logText.match(pattern);
-console.log(logText)
-console.log(foundItems);
+// console.log(logText)
+// console.log(foundItems);
 console.log(foundItems?.length);
