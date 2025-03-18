@@ -28,7 +28,6 @@ const puppeteerInit = async () => {
         let data = [];
         let elements = document.getElementsByClassName('app_tag');
         for (let element of elements) {
-            console.log(element.textContent);
             data.push(element.textContent);
         }
         return data;
