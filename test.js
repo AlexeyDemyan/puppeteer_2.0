@@ -18,12 +18,11 @@ const createAppId = (appid) => {
         headers: {
             "Content-Type": "application/json",
         },
-        body: {
-            "appid": 546784564
-        }
+        body: JSON.stringify({ appid: appid }),
     })
         .then((response) => {
             if (response.ok) {
+                console.log("success!");
                 return response.json();
             }
             throw new Error(`${response.status} ${response.statusText}`);
@@ -31,4 +30,4 @@ const createAppId = (appid) => {
         .catch((err) => { console.log(err); });
 }
 
-createAppId(123456);
+createAppId(124256);
