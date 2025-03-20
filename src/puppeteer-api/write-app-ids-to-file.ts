@@ -1,7 +1,11 @@
 import { FileReader } from '../file-reader/file-reader.js';
+import { FileWriter } from '../file-writer/file-writer.js';
 
-export const getAppIds = () => {
+const WRITE_FILE_PATH = 'logs/appids_list.txt';
+
+export const writeAppIdsToFile = () => {
   const fileReader = new FileReader('logs/appids.txt');
+  const fileWriter = new FileWriter(WRITE_FILE_PATH); 
   fileReader.read();
   const logText = fileReader.toString();
   const pattern = /\\"appid\\":\d{1,100},/g;
@@ -20,5 +24,6 @@ export const getAppIds = () => {
     }
     const result: Number[] = Array.from(mySet);
     console.log(result);
+    fileWriter.write(result.toString());
   }
 };
