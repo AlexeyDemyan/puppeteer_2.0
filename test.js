@@ -1,41 +1,34 @@
-import puppeteer from "puppeteer";
-import { config } from "dotenv";
+// const getData = () => {
+//     fetch('http://127.0.0.1:8000/api/appids')
+//         .then((response) => {
+//             if (response.ok) {
+//                 return response.json();
+//             }
+//             throw new Error(`${response.status} ${response.statusText}`);
+//         })
+//         .then((data) => { console.log(data); })
+//         .catch((err) => { console.log(err); });
+// };
 
-const puppeteerInit = async () => {
-    console.log("running puppeteer");
-    const parsedConfig = config();
-    if (parsedConfig.error) {
-        throw new Error("Can't read .env file. Perhaps the file does not exist.");
-    }
+// getData();
 
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-
-    await page.goto('file:///C:/Users/ademyanov/Desktop/Codes_and_Repos/puppeteer_2.0/logs/scraped_page.html');
-
-    //const appNameElement = await page.locator(`#${process.env.NAME_ID}`).waitHandle();
-    //const appImageElement = await page.locator(`.${process.env.HEADER_IMAGE_CLASS}`).waitHandle();
-
-    // const appName = await appNameElement?.evaluate((el) => el.textContent);
-    // const appImage = await appImageElement?.evaluate((el) => el.getAttribute('src'));
-
-    // const descriptionElement = await page.locator(`.${process.env.DESCRIPTION_CLASS}`).waitHandle();
-    // const description = await descriptionElement?.evaluate((el) => el.textContent);
-    // console.log(description.trim());
-
-    //working solution, need to evaluate in real time how the texts will come out
-    const tags = await page.evaluate(() => {
-        let data = [];
-        let elements = document.getElementsByClassName('app_tag');
-        for (let element of elements) {
-            data.push(element.textContent);
+const createAppId = (appid) => {
+    fetch('http://127.0.0.1:8000/api/appids', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: {
+            "appid": 546784564
         }
-        return data;
     })
-
-    console.log(tags);
-
-    await browser.close();
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error(`${response.status} ${response.statusText}`);
+        })
+        .catch((err) => { console.log(err); });
 }
 
-puppeteerInit();
+createAppId(123456);
