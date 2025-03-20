@@ -8,15 +8,17 @@ export const getAppIds = () => {
   const numberPattern = /\d{1,100}/g;
 
   const foundItems = logText.match(pattern);
-  console.log(foundItems?.length);
+
+  const mySet = new Set();
 
   if (foundItems) {
-    console.log(foundItems[0]);
-    console.log(foundItems[1]);
-    console.log(foundItems[2]);
-
-    for (let i = 0; i < 10; i++) {
-      console.log(foundItems[i].match(numberPattern));
+    for (let i = 0; i < foundItems.length; i++) {
+      const appId = foundItems[i].match(numberPattern);
+      if (appId) {
+        mySet.add(appId[0]);
+      }
     }
+    const result = Array.from(mySet);
+    console.log(result.length);
   }
 };
