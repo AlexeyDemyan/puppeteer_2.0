@@ -19,6 +19,8 @@ export const getAppIds = () => {
       }
     }
     const result: Number[] = Array.from(mySet);
-    console.log(result);
-  }
+    // console.log(result);
+
+    return result;
+  } throw new Error('no items found!');
 };

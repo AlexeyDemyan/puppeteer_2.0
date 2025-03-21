@@ -30,4 +30,4 @@ const createAppId = (appid) => {
         .catch((err) => { console.log(err); });
 }
 
-createAppId(124256);
+createAppId(2222);
