@@ -12,11 +12,7 @@
 
 // getData();
 
-export const createAppId = (
-  appid: Number,
-  index: Number,
-  totalAmount: Number
-) => {
+const createAppId = (appid: Number, index: Number, totalAmount: Number) => {
   fetch('http://127.0.0.1:8000/api/appids', {
     method: 'POST',
     headers: {
@@ -36,4 +32,10 @@ export const createAppId = (
     .catch((err) => {
       console.log(err);
     });
+};
+
+export const createAppIds = (appids: Number[]) => {
+  appids.forEach((appid) =>
+    createAppId(appid, appids.indexOf(appid), appids.length)
+  );
 };

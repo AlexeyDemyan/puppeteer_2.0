@@ -4,7 +4,8 @@ import { testFunc } from './mocks/test.js';
 import { getAppIds } from './puppeteer-api/get-app-ids.js';
 // import { puppeteerScrapeAppData } from './puppeteer-api/scrape-app-data.js';
 // import { writeAppIdsToFile } from './puppeteer-api/write-app-ids-to-file.js';
-import { createAppId } from './backend-api/write-apids-to-db.js';
+// import { createAppId } from './backend-api/write-apids-to-db.js';
+import { createAppIds } from './backend-api/write-apids-to-db.js';
 
 testFunc();
 // writeAppIdsToFile();
@@ -14,8 +15,6 @@ testFunc();
 
 const result = getAppIds();
 console.log(result);
-for (let i = 0; i < result.length; i++) {
-//   createAppId(result[i],);
-}
+createAppIds(result);
 
 console.log('DONE!');
